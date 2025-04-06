@@ -1,0 +1,109 @@
+<header>
+  <nav>
+    <button id="ai-rules-btn">AI-Rules</button>
+  </nav>
+</header>
+<section id="ai-rules-section" style="display: none;">
+  <h2>AI Rules Management</h2>
+  <p>Current Rules:</p>
+  <ul id="ai-rules-list"></ul>
+  <h3>Add New Rule</h3>
+  <form id="add-rule-form">
+    <label for="new-rule">New Rule:</label>
+    <textarea id="new-rule" name="new-rule" rows="3" cols="50" required></textarea>
+    <button type="submit">Add Rule</button>
+  </form>
+</section>
+
+<!-- Local Styles for AI-Rules Section -->
+<style>
+  /* Styles for the AI-Rules button in the header */
+  #ai-rules-btn {
+    background: #4CAF50; /* Green background for visibility */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  #ai-rules-btn:hover {
+    background: #45a049; /* Darker green on hover */
+  }
+  /* Styles for the AI Rules section and form */
+  #ai-rules-section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #ai-rules-section h2, #ai-rules-section h3 {
+    color: #333;
+  }
+  #ai-rules-list {
+    list-style-type: decimal;
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  #add-rule-form textarea {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+  }
+  #add-rule-form button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #add-rule-form button:hover {
+    background: #45a049;
+  }
+</style>
+
+<!-- Local Scripts for AI-Rules Functionality -->
+<script>
+  /* Shows the AI Rules section when the AI-Rules button is clicked */
+  function showAIRules() {
+    const section = document.getElementById('ai-rules-section');
+    section.style.display = 'block';
+    loadAIRules();
+  }
+
+  /* Loads AI rules from ai-rules.json and displays them in the list */
+  function loadAIRules() {
+    fetch('ai-rules.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('ai-rules-list');
+        list.innerHTML = '';
+        data.parameters.forEach((rule, index) => {
+          const li = document.createElement('li');
+          li.textContent = `${index + 1}. ${rule}`;
+          list.appendChild(li);
+        });
+      })
+      .catch(error => console.error('Error loading AI rules:', error));
+  }
+
+  /* Handles form submission to add a new AI rule to ai-rules.json */
+  document.getElementById('add-rule-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const newRule = document.getElementById('new-rule').value;
+    fetch('ai-rules.json')
+      .then(response => response.json())
+      .then(data => {
+        data.parameters.push(newRule);
+        // Since we can't write to ai-rules.json directly in a browser, save to localStorage as a temporary solution
+        localStorage.setItem('ai-rules', JSON.stringify(data));
+        alert('New rule added! Saved to localStorage. To persist changes, update ai-rules.json manually with the new rules.');
+        loadAIRules(); // Refresh the list
+      })
+      .catch(error => console.error('Error adding AI rule:', error));
+  });
+
+  // Attach the event listener to the AI-Rules button
+  document.getElementById('ai-rules-btn').addEventListener('click', showAIRules);
+</script>
