@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Reset default styles */
 * {
     margin: 0;
@@ -74,18 +72,14 @@ body {
     margin-bottom: var(--spacing-medium);
 }
 
-#sidebar ul {
-    list-style: none;
-}
-
-#sidebar ul li a {
+#sidebar a {
     color: var(--text-color);
     text-decoration: none;
     display: block;
     padding: var(--spacing-small) 0;
 }
 
-#sidebar ul li a:hover {
+#sidebar a:hover {
     color: var(--primary-color);
 }
 
@@ -103,14 +97,6 @@ body {
 
 #content h2 {
     margin-bottom: var(--spacing-medium);
-}
-
-/* Category Sections */
-#content .category {
-    margin-bottom: 40px;
-    padding: 15px;
-    background-color: #333;
-    border-radius: 5px;
 }
 
 /* Step Styling */
@@ -164,6 +150,6 @@ button:hover {
         padding: 60px var(--spacing-medium) var(--spacing-large);
     }
     #sidebar {
-        display: none;
+        display: none; /* Remove this line if you want the sidebar on small screens */
     }
 }
