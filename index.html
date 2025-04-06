@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="data/index.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="active">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+            <!-- Removed "Save Export Data" and "To-Do List" links on 04-05-25 -->
+        </div>
+    </div>
+
+<!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Updated sidebar links on 04-05-25: Removed Save Export Data and To-Do List from top bar, updated Code-combiner link -->
+        <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="#ai-rules">AI Rules</a></li>
+            <li><a href="code_modifier.html">Code-combiner</a></li>
+            <li><a href="save-export-data.html">Save Export Data</a></li>
+            <li><a href="to-do-list.html">To-Do List</a></li>
+        </ul>
+    </div>
+
+<!-- Main Content Area -->
+    <div class="content">
+        <header>
+            <h1>AI Logic Simulator Hub</h1>
+        </header>
+        <main>
+            <section class="category">
+                <h2>Welcome Back!</h2>
+                <p>Hey Me, Welcome Back to the AI Logic Simulator Hub! [...]</p>
+            </section>
+            <!-- [Other sections like "AI Rules" unchanged, truncated for brevity] -->
+            <section id="ai-rules" class="category">
+                <h3>AI Rules for Handling "Locked" Files</h3>
+                <!-- [Previous content unchanged, including the 04-04-25 addition] -->
+            </section>
+
+            <section class="category">
+                <h3>What’s the Purpose?</h3>
+                <p>The site’s goal is to let you build and simulate stories using AI logic (or at least fake it ‘til you make it!). It’s got sections like Simulators, Stories, Templates, Logs, and the big one: Storytelling. The project is designed to run entirely in the browser—no server-side dependencies like Node.js or http-server are needed, keeping it lightweight and accessible.</p>
+            </section>
+
+            <section class="category">
+                <h3>How’s It Supposed to Work?</h3>
+                <ul>
+                    <li><strong>Adding Entries</strong>: On the Storytelling page, you’ll find an “Input Feature” section. Paste some text, pick a category, and hit add—it’s that simple. Each entry gets its own little spot with options to expand/hide or delete it.</li>
+                    <li><strong>Managing Entries</strong>: Every entry has buttons:
+                        <ul>
+                            <li><strong>Expand/Hide</strong>: Toggle the text to keep things tidy.</li>
+                            <li><strong>Delete This</strong>: Get rid of stuff you don’t need anymore.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Saving and Loading</strong>:
+                        <ul>
+                            <li>Entries stick around thanks to localStorage, so they’re there even if you close the browser.</li>
+                            <li>Hit “Download Updated Library” to save everything as a library.json file.</li>
+                            <li>Use “Load Library” in the top menu to upload a library.json file and update your entries.</li>
+                            <li><strong>Chat-Based Auto-Save (Expanded Details)</strong>:
+                                <ul>
+                                    <li>When you tweak this project in a chat with an AI (like Grok), it runs an “auto-save” in the background to protect your work.</li>
+                                    <li>It saves every time you change a file, such as index.html, script.js, or styles.css, capturing the full code state of all project files.</li>
+                                    <li>The AI keeps the last 10 full code states in its memory, allowing you to roll back to previous versions if needed.</li>
+                                    <li>To retrieve a saved state, say “load save X” (where X is 1 to 10) in the chat, and the AI will provide the code from that save point.</li>
+                                    <li>Use “list-auto-saves” to see up to 10 recent changes, with notes like “save nr1. ‘Added X to Y’” to track your progress.</li>
+                                    <li>Once 10 saves are reached, the AI exports a saves.json file automatically and clears the history to free resources, ensuring efficient memory usage.</li>
+                                    <li>You can also say “export-saves” to download a saves.json file at any time, which also clears the history.</li>
+                                    <li>The saves.json file has two sections: “latest_export_data” for the most recent export (up to 10 saves), and “previous_export_data” for past exports (limited to 5 previous exports, for a total of 50 save points).</li>
+                                    <li>In a new chat, provide the entire saves.json file and say “import-saves” to restore the history, allowing you to pick up where you left off.</li>
+                                    <li>Use the “Save Export Data” page to manage saves.json: load the file, review or edit the export data in a text field, and export a new saves.json with updated history.</li>
+                                    <li>Without exporting, saves reset per chat session—you won’t need to redefine this later.</li>
+                                    <li><strong>Important Note</strong>: The auto-save feature in chat does not use JSON.parse due to compatibility issues with some project components. Instead, it relies on direct string manipulation for saving and loading states, ensuring reliability across all chat interactions.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>It’s all browser-based—super lightweight and no fancy setup required.</p>
+            </section>
+
+            <section class="category">
+                <h3>Stuff to Ignore (Orders You Gave Me)</h3>
+                <p>No Local Server Nonsense: You told me not to mention or use local server functions like Node.js or http-server. Good call—this thing runs 100% in the browser, no server needed. Don’t even think about spinning up Node.js; it’ll just muddy the waters.</p>
+                <p>If I ever hinted at server-side stuff in the past, pretend it didn’t happen. This is a pure client-side gig.</p>
+            </section>
+
+            <section class="category">
+                <h3>Key Things to Know</h3>
+                <ul>
+                    <li><strong>Persistence</strong>: localStorage keeps your entries safe until you delete them or clear your browser’s storage.</li>
+                    <li><strong>File Format</strong>: When loading a library.json, make sure it’s got a storytelling key with an entries array inside, or it’ll choke. Check the code if you’re unsure.</li>
+                    <li><strong>Where’s the Magic?</strong>: Look in storytelling.html, script.js, and styles.css. They’re packed with comments to guide you through what’s what.</li>
+                </ul>
+            </section>
+
+<section class="category">
+    <h3>Current Progress and Updates</h3>
+    <p>Here’s a quick rundown of the project’s current state to get you up to speed:</p>
+    <ul>
+        <li><strong>Storytelling Framework</strong>: Fully functional with the ability to add, expand/hide, and delete story entries. Categories are predefined, and entries are saved to localStorage for persistence.</li>
+        <li><strong>Templates Page</strong>: Recently updated to include an "Add New Template" feature. You can add text to a category via a dropdown, but the display only updates when you click the corresponding sidebar button. Templates are also saved in localStorage.</li>
+        <li><strong>Save Export Data Page</strong>: Includes a section to load and export saves.json files, plus an "Edit Project Files" area where you can edit all project files (e.g., index.html, script.js) in textareas. Changes are auto-saved to localStorage, and you can export them manually.</li>
+        <li><strong>To-Do List Page</strong>: A simple task list where you can add and delete tasks, with a two-column layout for tasks on the right side.</li>
+        <li><strong>Auto-Save in Chat</strong>: The auto-save feature captures project file states during chat interactions, with commands like “load save X,” “list-auto-saves,” and “export-saves” to manage progress.</li>
+        <li><strong>Recent Fixes</strong>: Fixed a stylesheet naming issue (changed "style.css" to "styles.css" across all files) and removed unused template sections from templates.html to streamline the page.</li>
+        <li><strong>Code Isolation for Stories Page</strong>: Moved JavaScript and CSS specific to the Stories page into `stories.js` and `stories.css` in the `data` folder. This keeps the Stories page safe from changes to shared files and makes the project more modular.</li>
+        <li><strong>Structural Improvements to Index Page</strong>: Organized content into categorized `<section>` tags for better navigation. Updated `styles.css` to add spacing between sections and improve list styling for readability.</li>
+        <li><strong>Code-combiner Feature</strong>: Added a new "Code-combiner" page, accessible from the sidebar. This feature lets you modify and combine code snippets easily, streamlining project file management.</li>
+        <li><strong>Updated Sidebar</strong>: Streamlined the sidebar to include "Start," "Code-combiner," "Save Export Data," and "To-Do List" for quick, task-focused navigation.</li>
+        <li><strong>Page-Specific Files</strong>: Introduced `index.css` and `index.js` in the `data` folder to handle styling and functionality unique to this page, keeping the project organized as it grows.</li>
+    </ul>
+</section>
+
+<section id="ai-rules" class="category">
+    <h3>AI Rules for Handling "Locked" Files</h3>
+    <p>Hey, future me! These rules are here to keep your finished files safe from accidental mess-ups while still letting you tweak them when needed. Think of "locked" files as your completed masterpieces—like <code>stories.html</code>—that shouldn’t change unless there’s a good reason. Here’s the breakdown:</p>
+    <ul>
+        <li><strong>What’s a "Locked" File?</strong>
+            <p>It’s a file you’ve finished and tested, like <code>stories.html</code>. It’s not set in stone (not read-only), but you should treat it with care and only edit it following these steps.</p>
+        </li>
+        <li><strong>How to Edit a Locked File</strong>
+            <p>Before you touch it:</p>
+            <ul>
+                <li><strong>Say Why</strong>: Write down why you’re changing it (e.g., "The story list isn’t showing up—fixing a bug").</li>
+                <li><strong>Keep a Note</strong>: Add a comment in the file or a changelog, like "2023-10-15 - Added missing div."</li>
+                <li><strong>Check It Works</strong>: Test the file after editing to make sure it’s still doing its job.</li>
+            </ul>
+        </li>
+        <li><strong>Dealing with Shared Files</strong> (e.g., <code>script.js</code> or <code>styles.css</code>)
+            <p>These files are used by lots of pages, including locked ones, so be extra careful:</p>
+            <ul>
+                <li><strong>Flag the Important Bits</strong>: In the shared file, add comments like "This part is for stories.html—don’t break it!"</li>
+                <li><strong>Look Before You Leap</strong>: Check those flagged parts before editing to avoid messing up locked files.</li>
+                <li><strong>Test Everything</strong>: After changing a shared file, open up the locked files (like <code>stories.html</code>) and make sure they still work.</li>
+            </ul>
+        </li>
+        <li><strong>Keep Things Separate</strong>
+            <p>Move code specific to a locked file (e.g., JavaScript or CSS for <code>stories.html</code>) into its own files, like <code>stories.js</code> or <code>stories.css</code>, in the <code>data</code> folder. This way, shared files don’t mess with them.</p>
+        </li>
+        <li><strong>Plan for Updates</strong>
+            <p>Write your code in chunks (like using ES6 modules) and add notes in shared files, like "Add stories.js back here if needed." This makes it easy to update later without breaking stuff.</p>
+        </li>
+        <li><strong>Extra Safety (Optional)</strong>
+            <p>Use Git to save your work. If something goes wrong, you can roll back. Name your saves clearly, like "Split off stories.js from script.js."</p>
+        </li>
+    </ul>
+    <p>Bottom line: These rules keep your project tidy and safe. Locked files stay solid, but you can still fix or improve them—just follow the steps. You’ve got this!</p>
+</section>
+
+            <section class="category">
+                <h3>Next Steps</h3>
+                <p>Jump into the <a href="storytelling.html">Storytelling page</a> to start adding entries, or visit the <a href="save-export-data.html">Save Export Data page</a> to manage your project files and saves. The <a href="to-do-list.html">To-Do List page</a> can help you track tasks. If you’re tweaking things, the code’s your map—it’s all there, no server-side mysteries to unravel.</p>
+                <p>This is your baby, so have fun with it! Keep pushing the AI Logic Simulator Hub forward—future you will thank past you for this note.</p>
+            </section>
+</main>
+    </div>
+
+    <!-- Include the shared script file -->
+    <script src="script.js"></script>
+    <!-- Include the index-specific script -->
+    <script src="data/index.js"></script>
+    <!-- [Cloudflare scripts unchanged, truncated] -->
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929be9781c597b91',t:'MTc0MzU1MDYyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92ba0955e9b2677f',t:'MTc0Mzg2NjQ5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92ba3a1dbce97b98',t:'MTc0Mzg2ODQ5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92ba4faa3cf653d4',t:'MTc0Mzg2OTM4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92ba6aad49b37bac',t:'MTc0Mzg3MDQ4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="data/index.css">
+</head>
+<body>
+    <!-- [Navigation Bar, Sidebar, and Other Sections Omitted for Brevity] -->
+
+    <div class="content">
+        <!-- [Other Sections Omitted] -->
+
+        <section id="ai-rules" class="category">
+            <h3>AI Rules for Handling "Locked" Files</h3>
+            <p>Hey, future me! These rules are here to keep your finished files safe from accidental mess-ups while still letting you tweak them when needed. Think of "locked" files as your completed masterpieces—like <code>stories.html</code>—that shouldn’t change unless there’s a good reason. Here’s the breakdown:</p>
+            <ul>
+                <li><strong>What’s a "Locked" File?</strong>
+                    <p>It’s a file you’ve finished and tested, like <code>stories.html</code>. It’s not set in stone (not read-only), but you should treat it with care and only edit it following these steps.</p>
+                </li>
+                <li><strong>How to Edit a Locked File</strong>
+                    <p>Before you touch it:</p>
+                    <ul>
+                        <li><strong>Say Why</strong>: Write down why you’re changing it (e.g., "The story list isn’t showing up—fixing a bug").</li>
+                        <li><strong>Keep a Note</strong>: Add a comment in the file or a changelog, like "2023-10-15 - Added missing div."</li>
+                        <li><strong>Check It Works</strong>: Test the file after editing to make sure it’s still doing its job.</li>
+                    </ul>
+                </li>
+                <li><strong>Dealing with Shared Files</strong> (e.g., <code>script.js</code> or <code>styles.css</code>)
+                    <p>These files are used by lots of pages, including locked ones, so be extra careful:</p>
+                    <ul>
+                        <li><strong>Flag the Important Bits</strong>: In the shared file, add comments like "This part is for stories.html—don’t break it!"</li>
+                        <li><strong>Look Before You Leap</strong>: Check those flagged parts before editing to avoid messing up locked files.</li>
+                        <li><strong>Test Everything</strong>: After changing a shared file, open up the locked files (like <code>stories.html</code>) and make sure they still work.</li>
+                    </ul>
+                </li>
+                <li><strong>Keep Things Separate</strong>
+                    <p>Move code specific to a locked file (e.g., JavaScript or CSS for <code>stories.html</code>) into its own files, like <code>stories.js</code> or <code>stories.css</code>, in the <code>data</code> folder. This way, shared files don’t mess with them.</p>
+                </li>
+                <li><strong>Plan for Updates</strong>
+                    <p>Write your code in chunks (like using ES6 modules) and add notes in shared files, like "Add stories.js back here if needed." This makes it easy to update later without breaking stuff.</p>
+                </li>
+                <!-- Added on 04-04-25 - Documented code combiner functionality for AI code generation -->
+                <li><strong>Generating Code for the Code Combiner</strong>
+                    <p>When creating code for use with the code combiner tool, adhere to its functionality: Input 1 accepts text representing changes or additions to a codebase. Input 2 contains the entire existing code of a file. Upon clicking 'Combine,' the tool appends the content of Input 1 to the end of Input 2, separated by a newline, and displays the resulting modified code in an output field, which can then be copied for use.</p>
+                </li>
+                <li><strong>Extra Safety (Optional)</strong>
+                    <p>Use Git to save your work. If something goes wrong, you can roll back. Name your saves clearly, like "Split off stories.js from script.js."</p>
+                </li>
+            </ul>
+            <p>Bottom line: These rules keep your project tidy and safe. Locked files stay solid, but you can still fix or improve them—just follow the steps. You’ve got this!</p>
+        </section>
+
+        <!-- [Other Sections and Scripts Omitted] -->
+    </div>
+
+    <script src="script.js"></script>
+    <script src="data/index.js"></script>
+    <!-- [Cloudflare Scripts Omitted] -->
+</body>
+</html>

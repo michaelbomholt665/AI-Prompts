@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Templates</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="templates">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" role="navigation">
+        <div class="nav-container">
+			<a href="index.html" class="active">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="templates-sidebar" class="sidebar" role="complementary">
+        <h3>Templates</h3>
+        <ul id="templates-menu" aria-label="Template Menu">
+            <!-- Dynamic template menu will be inserted here -->
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="templates-content" class="content" role="main">
+        <h1>Template Management</h1>
+        <section id="templates-edit-mode" aria-label="Edit Mode">
+            <h2>Edit Templates</h2>
+            <select id="templates-template-select" onchange="loadTemplateText()">
+                <option value="">Select a template</option>
+            </select>
+            <button onclick="addTemplate()">Add Template</button>
+            <button onclick="deleteTemplate()">Delete Template</button>
+            <textarea id="templates-template-text" placeholder="Template text..."></textarea>
+            <button onclick="saveTemplateText()">Save Template</button>
+            <button onclick="showTextDisplay(document.getElementById('templates-template-select').value, document.getElementById('templates-template-text').value)">Show Text</button>
+        </section>
+        <section id="templates-text-display" aria-label="Text Display" style="display: none;">
+            <button id="templates-back-to-edit" class="action-button" onclick="showEditMode()">Back to Edit Mode</button>
+            <h2 id="templates-display-title"></h2>
+            <p id="templates-display-text"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Save Export Data</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Shared styles -->
+    <link rel="stylesheet" href="data/save-export-data.css"> <!-- Page-specific styles -->
+    <script src="script.js" defer></script> <!-- Shared scripts -->
+    <script src="data/save-export-data.js" defer></script> <!-- Page-specific scripts -->
+</head>
+<body data-page="save_export_data">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" role="navigation">
+        <div class="nav-container">
+            <a href="index.html">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" role="complementary">
+        <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="#ai-rules">AI Rules</a></li>
+            <li><a href="code_modifier.html">Code-combiner</a></li>
+            <li><a href="save-export-data.html" class="active">Save Export Data</a></li>
+            <li><a href="to-do-list.html">To-Do List</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content" role="main">
+        <h1>Save Export Data</h1>
+        <div class="content-wrapper">
+            <!-- Left Column: Load and Export Sections -->
+            <div class="left-column">
+                <section id="load-saves-section">
+                    <h3>Load Saves.json</h3>
+                    <input type="file" id="load-saves" accept=".json" onchange="loadSavesJson(this)">
+                    <label for="load-saves">Upload Saves.json</label>
+                </section>
+                <section id="export-data-section">
+                    <h3>Export Data</h3>
+                    <p>Enter the new save data in JSON format. Example:</p>
+                    <pre>
+{
+  "saves": [
+    {
+      "number": 1,
+      "description": "Example change",
+      "files": {
+        "index.html": "...code...",
+        "script.js": "...code...",
+        "styles.css": "...code..."
+      }
+    }
+  ]
+}
+                    </pre>
+                    <textarea id="export-data" rows="10">
+{
+  "saves": [
+    {
+      "number": 1,
+      "description": "Example change",
+      "files": {
+        "index.html": "...code...",
+        "script.js": "...code...",
+        "styles.css": "...code..."
+      }
+    }
+  ]
+}
+                    </textarea>
+                    <button onclick="exportSavesJson()">Export New Saves.json</button>
+                </section>
+            </div>
+
+            <!-- Right Column: Edit Project Files -->
+            <div class="right-column">
+                <section id="edit-files-section">
+                    <h3>Edit Project Files</h3>
+                    <p>Use the textareas below to edit your project files. Changes are auto-saved to localStorage, and you can export them to saves.json manually.</p>
+                    <div id="editors"></div>
+                    <button onclick="exportSavesManually()">Export Saves Manually</button>
+                    <button onclick="exportAllFiles()">Export All Project Files</button>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

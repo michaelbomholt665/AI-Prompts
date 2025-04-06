@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Logs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="logs">
+    <!-- Navigation Bar -->
+    <nav id="nav-bar" class="nav-bar" role="navigation">
+        <div class="nav-container">
+            <a href="index.html">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html" class="active">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="logs-sidebar" class="sidebar" role="complementary">
+        <h3>Simulators</h3>
+        <ul>
+            <li><a>Simulator 1: Medieval Planet</a></li>
+            <li><a>Simulator 2: Space Federation</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="logs-content" class="content" role="main">
+        <h1>Input/Output Logs</h1>
+        <input type="text" class="search-bar" placeholder="Search logs..." aria-label="Search logs">
+        <section class="import-section">
+            <h4>Import Chat History</h4>
+            <input type="file" id="logs-import-chat-history" accept=".json" onchange="importChatHistory(this)">
+            <label for="logs-import-chat-history">Upload Chat History JSON</label>
+        </section>
+        <section class="command-section">
+            <h4>Command to Export Compatible Chat History</h4>
+            <pre id="logs-chat-history-command">
+Generate a JSON file for our chat history in the following format: 
+{
+  "messages": [
+    {
+      "sender": "user" | "ai",
+      "timestamp": "YYYY-MM-DDTHH:MM:SSZ",
+      "content": "Message text"
+    }
+  ]
+}
+Ensure the following:
+- The top-level key must be "messages".
+- The "sender" field must be "user" or "ai".
+- The "timestamp" field must be in ISO 8601 format (e.g., "2025-03-31T10:00:00Z").
+- The "content" field must contain properly escaped text.
+- Include all messages from our conversation.
+- Ensure the JSON is syntactically valid.
+            </pre>
+            <button class="copy-btn" onclick="copyCommandToClipboard()">Copy to Clipboard</button>
+        </section>
+        <section class="session-logs">
+            <h4>Session Logs</h4>
+            <div id="logs-list">
+                <!-- Logs will be loaded here -->
+            </div>
+        </section>
+        <div class="library-controls">
+            <button onclick="downloadLibraryFile()">Download Updated Library</button>
+        </div>
+    </main>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', loadLogsEntries);
+    </script>
+</body>
+</html>

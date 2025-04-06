@@ -1,0 +1,68 @@
+/* data/code_modifier.css */
+
+/* Ensure main content respects sidebar width */
+.content {
+    margin-left: 155px;
+    padding: 50px;
+    max-width: calc(100% - 200px);
+}
+
+/* Container for code modifier elements */
+#code-modifier-section {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border: 1px solid #ccc; /* Added for consistency with textareas */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style textareas */
+#code-modifier-section textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Standardized */
+    border-radius: 5px; /* Aligned with root CSS */
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* Style labels */
+#code-modifier-section label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style button */
+#code-modifier-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50; /* Added for consistency */
+    border-radius: 5px; /* Aligned with root CSS */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Added border transition */
+}
+
+#code-modifier-section button:hover {
+    background-color: #45a049;
+    border-color: #45a049; /* Matches hover background */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    #code-modifier-section textarea {
+        max-width: 100%;
+    }
+}

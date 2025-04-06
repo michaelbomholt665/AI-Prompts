@@ -1,0 +1,169 @@
+/* styles.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #00b4d8;
+    --background-color: #222;
+    --text-color: #fff;
+    --menu-background: #2a2a2a;
+    --spacing-small: 5px;
+    --spacing-medium: 10px;
+    --spacing-large: 20px;
+    --border-color: #ccc;
+}
+
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+#nav-bar {
+    background-color: #111;
+    padding: var(--spacing-medium) 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.nav-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: var(--spacing-small);
+}
+
+.nav-container a:hover,
+.nav-container a.active {
+    color: var(--text-color);
+}
+
+/* Sidebar */
+#sidebar {
+    width: 200px;
+    background-color: var(--menu-background);
+    height: 100vh;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    padding: var(--spacing-large);
+    overflow-y: auto;
+}
+
+#sidebar h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-medium);
+}
+
+#sidebar ul {
+    list-style: none;
+}
+
+#sidebar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-small) 0;
+}
+
+#sidebar ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Main Content */
+#content {
+    margin-left: 250px;
+    padding: 70px var(--spacing-large) var(--spacing-large);
+    min-height: 100vh;
+}
+
+#content h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+}
+
+#content h2 {
+    margin-bottom: var(--spacing-medium);
+}
+
+/* Category Sections */
+#content .category {
+    margin-bottom: 40px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Step Styling */
+.step {
+    background-color: #333;
+    padding: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border-radius: 5px;
+}
+
+/* Library Controls */
+.library-controls {
+    margin-bottom: var(--spacing-large);
+}
+
+.library-controls button {
+    margin-right: var(--spacing-medium);
+    padding: var(--spacing-small) var(--spacing-medium);
+}
+
+/* Input Elements */
+select, textarea {
+    width: 100%;
+    padding: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #444;
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    padding: var(--spacing-small) var(--spacing-medium);
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: var(--spacing-small);
+}
+
+button:hover {
+    background-color: #009bbd;
+    border-color: #009bbd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #content {
+        margin-left: 0;
+        padding: 60px var(--spacing-medium) var(--spacing-large);
+    }
+    #sidebar {
+        display: none;
+    }
+}

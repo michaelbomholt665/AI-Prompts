@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - To-Do List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Shared styles -->
+    <link rel="stylesheet" href="data/to-do-list.css"> <!-- Page-specific styles -->
+    <script src="script.js" defer></script> <!-- Shared scripts -->
+    <script src="data/to-do-list.js" defer></script> <!-- Page-specific scripts -->
+</head>
+<body data-page="to_do_list">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" role="navigation">
+        <div class="nav-container">
+            <a href="index.html">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" role="complementary">
+        <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="#ai-rules">AI Rules</a></li>
+            <li><a href="code_modifier.html">Code-combiner</a></li>
+            <li><a href="save-export-data.html">Save Export Data</a></li>
+            <li><a href="to-do-list.html" class="active">To-Do List</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content" role="main">
+        <h1>To-Do List</h1>
+        <section id="task-list">
+            <h2>Task List</h2>
+            <div class="step" id="tasks">
+                <h3>Tasks</h3>
+                <div class="text-entries"></div>
+            </div>
+        </section>
+        <section id="input-feature">
+            <h2>Add New Task</h2>
+            <textarea id="input-text" placeholder="Enter task description..."></textarea>
+            <button onclick="addTask()">Add Task</button>
+        </section>
+    </main>
+</body>
+</html>

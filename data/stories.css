@@ -1,0 +1,50 @@
+/* data/stories.css */
+
+/* Styles specific to stories.html */
+#stories-sidebar {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border: 1px solid #ccc; /* Added for consistency with other sections */
+    border-radius: 5px; /* Matches root CSS */
+}
+
+#stories-edit-mode select,
+#stories-edit-mode button,
+#stories-edit-mode textarea {
+    margin: 5px 0;
+}
+
+#stories-edit-mode select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    background-color: #444;
+    color: #fff;
+}
+
+#stories-edit-mode button {
+    padding: 10px 20px;
+    background-color: #00b4d8; /* Uses root --primary-color */
+    color: #fff;
+    border: 1px solid #00b4d8; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#stories-edit-mode button:hover {
+    background-color: #009bbd;
+    border-color: #009bbd; /* Matches hover background */
+}
+
+#stories-chapter-text {
+    width: 100%;
+    height: 200px;
+    padding: 10px; /* Added for consistency */
+    border: 1px solid #ccc; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    resize: vertical;
+    font-family: monospace; /* Added for consistency with other textareas */
+    font-size: 14px; /* Added for consistency */
+}

@@ -1,0 +1,52 @@
+/* storytelling.css */
+
+/* Phase Sections */
+#intro, #pre-writing, #writing, #revision {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Steps inherit from global .step in styles.css, but can be enhanced */
+.step h3 {
+    color: var(--primary-color);
+}
+
+.step p {
+    margin: 5px 0;
+}
+
+.text-entries {
+    margin-top: 10px;
+}
+
+/* Input Feature */
+.input-feature {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.category-suggestion {
+    margin-top: 10px;
+}
+
+.category-suggestion select {
+    margin-bottom: 10px;
+}
+
+.category-suggestion button {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+    padding: 10px 20px;
+}
+
+.category-suggestion button:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}

@@ -1,0 +1,94 @@
+/* data/save-export-data.css */
+
+/* Ensure main content respects sidebar width */
+.content {
+    margin-left: 200px;
+    padding: 10px;
+    max-width: calc(100% - 200px);
+}
+
+/* Two-column layout */
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    background-color: #2a2a2a; /* Fixed missing semicolon */
+    padding: 10px;
+    border: 1px solid #ccc; /* Added for consistency with sections */
+    border-radius: 5px; /* Matches root CSS */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#export-section textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    margin: 10px 0;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Standardized */
+    border-radius: 5px; /* Matches root CSS */
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#load-section input[type="file"] {
+    display: none;
+}
+
+#load-section label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2a2a2a; /* Fixed missing semicolon */
+    color: white;
+    border: 1px solid #2a2a2a; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    cursor: pointer;
+    margin: 10px 0;
+    transition: opacity 0.3s, border-color 0.3s; /* Added border transition */
+}
+
+#load-section label:hover, button:hover {
+    opacity: 0.9;
+    border-color: #888; /* Darker shade for hover */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+    border-color: #45a049; /* Matches hover background */
+}
+
+pre {
+    background-color: #2a2a2a
+    padding: 10px;
+    border: 1px solid #ccc; /* Added for consistency */
+    border-radius: 5px; /* Matches root CSS */
+    overflow-x: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    .content-wrapper {
+        flex-direction: column;
+    }
+}

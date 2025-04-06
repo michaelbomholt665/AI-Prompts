@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Code Modifier</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Shared styles -->
+    <link rel="stylesheet" href="data/code_modifier.css"> <!-- Code modifier-specific styles -->
+    <script src="script.js" defer></script> <!-- Shared scripts -->
+    <script src="data/code_modifier.js" defer></script> <!-- Code modifier-specific scripts -->
+</head>
+<body data-page="code_modifier">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" role="navigation">
+        <div class="nav-container">
+            <a href="index.html">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" role="complementary">
+        <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="#ai-rules">AI Rules</a></li>
+            <li><a href="code_modifier.html" class="active">Code-combiner</a></li>
+            <li><a href="save-export-data.html">Save Export Data</a></li>
+            <li><a href="to-do-list.html">To-Do List</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content" role="main">
+        <h1>Code Modifier</h1>
+        <section id="code-modifier-section" aria-label="Code Modifier">
+            <label for="input1">Changes/Additions (Input 1):</label><br>
+            <textarea id="input1" placeholder="Enter the code to change or add here"></textarea><br>
+            
+            <label for="input2">Existing Code (Input 2):</label><br>
+            <textarea id="input2" placeholder="Paste the entire existing code here"></textarea><br>
+            
+            <button onclick="modifyCode()">Combine</button><br>
+            
+            <label for="output">Modified Code (Output):</label><br>
+            <textarea id="output" placeholder="The modified code will appear here" readonly></textarea>
+        </section>
+    </main>
+</body>
+</html>

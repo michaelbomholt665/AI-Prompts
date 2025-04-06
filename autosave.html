@@ -1,0 +1,119 @@
+// List of files to edit (matches the project's files)
+const files = [
+    'index.html',
+    'logs.html',
+    'save-export-data.html',
+    'script.js',
+    'autosave.js',
+    'styles.css',
+    'simulators.html',
+    'stories.html',
+    'storytelling.html',
+    'templates.html',
+    'to-do-list.html'
+];
+
+// Initialize save storage
+let saves = JSON.parse(localStorage.getItem('saves')) || [];
+let saveNumber = saves.length > 0 ? saves[saves.length - 1].number + 1 : 1;
+
+// Create textareas dynamically
+const editorsContainer = document.getElementById('editors');
+const fileEditors = {};
+
+files.forEach((file, index) => {
+    const label = document.createElement('label');
+    label.textContent = file + ':';
+    const textarea = document.createElement('textarea');
+    textarea.id = file.replace('.', '-') + '-editor'; // e.g., index-html-editor
+    textarea.className = 'input-feature'; // Apply existing textarea styling
+
+    // Create a flex container for every two textareas
+    if (index % 2 === 0) {
+        const flexContainer = document.createElement('div');
+        flexContainer.className = 'flex-container';
+        editorsContainer.appendChild(flexContainer);
+    }
+
+    // Append label and textarea to the last flex container
+    const flexContainer = editorsContainer.lastElementChild;
+    const editorWrapper = document.createElement('div');
+    editorWrapper.className = 'editor-wrapper';
+    editorWrapper.appendChild(label);
+    editorWrapper.appendChild(textarea);
+    flexContainer.appendChild(editorWrapper);
+
+    fileEditors[file] = textarea;
+});
+
+// Function to create a save object
+function createSave(description) {
+    const filesContent = {};
+    for (const [fileName, editor] of Object.entries(fileEditors)) {
+        filesContent[fileName] = editor.value;
+    }
+    return {
+        number: saveNumber++,
+        description: description || `Auto-save at ${new Date().toISOString()}`,
+        files: filesContent
+    };
+}
+
+// Function to add a save and check export condition
+function addSave(description) {
+    const newSave = createSave(description);
+    saves.push(newSave);
+    
+    if (saves.length >= 10) {
+        exportSaves();
+        saves = [];
+    }
+    
+    localStorage.setItem('saves', JSON.stringify(saves));
+    console.log('Saved:', newSave);
+}
+
+// Function to export saves to saves.json
+function exportSaves() {
+    const exportData = {
+        latest_export_data: {
+            export_timestamp: new Date().toISOString(),
+            saves: saves
+        },
+        previous_export_data: []
+    };
+    
+    const jsonString = JSON.stringify(exportData, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'saves.json';
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+// Manual export function
+function exportSavesManually() {
+    if (saves.length === 0) {
+        addSave('Manual export');
+    }
+    exportSaves();
+}
+
+// Detect changes in editors and auto-save
+Object.values(fileEditors).forEach(editor => {
+    editor.addEventListener('input', () => {
+        addSave();
+    });
+});
+
+// Load latest save on page load (optional)
+if (saves.length > 0) {
+    const latestSave = saves[saves.length - 1];
+    for (const [fileName, content] of Object.entries(latestSave.files)) {
+        if (fileEditors[fileName]) {
+            fileEditors[fileName].value = content;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Simulators</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="simulators">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" role="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="active">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html">Storytelling</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="simulators-sidebar" class="sidebar" role="complementary">
+        <h3>Simulators</h3>
+        <ul>
+            <li><a onclick="selectSimulator('sim1')">Simulator 1: Medieval Planet</a></li>
+            <li><a onclick="selectSimulator('sim2')">Simulator 2: Space Federation</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="simulators-content" class="content" role="main">
+        <h1>World/Galaxy Simulators</h1>
+        <input type="text" class="search-bar" placeholder="Search simulators..." aria-label="Search simulators">
+        <section class="description-area" id="simulators-description">
+            <p>[Select a simulator from the sidebar]</p>
+        </section>
+        <section class="active-simulators">
+            <h4>Active Simulators</h4>
+            <button class="collapsible" onclick="toggleCollapse(this)">Simulator 1: Medieval Planet</button>
+            <div class="collapse-content">
+                <p>[Placeholder: Settings, logic summary, etc.]</p>
+            </div>
+            <button class="collapsible" onclick="toggleCollapse(this)">Simulator 2: Space Federation</button>
+            <div class="collapse-content">
+                <p>[Placeholder: Settings, logic summary, etc.]</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Inline JavaScript (preserved) -->
+    <script>
+        function toggleCollapse(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        function selectSimulator(simId) {
+            const descriptionArea = document.getElementById('simulators-description');
+            const descriptions = {
+                "sim1": "A medieval world with kingdoms and dragons.",
+                "sim2": "A futuristic galaxy with interstellar alliances."
+            };
+            descriptionArea.innerHTML = `<p>${descriptions[simId]}</p>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Logic Simulator Hub - Storytelling</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="data/storytelling.css">
+</head>
+<body data-page="storytelling">
+    <!-- Navigation Bar -->
+    <div id="nav-bar">
+        <div class="nav-container">
+            <a href="index.html">Start</a>
+            <a href="simulators.html">Simulators</a>
+            <a href="stories.html">Stories</a>
+            <a href="templates.html">Templates</a>
+            <a href="logs.html">Logs</a>
+            <a href="storytelling.html" class="active">Storytelling</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h3>Simulators</h3>
+        <a>Simulator 1: Medieval Planet</a>
+        <a>Simulator 2: Space Federation</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="content">
+        <header>
+            <h1>Storytelling with AI: A Comprehensive Framework</h1>
+        </header>
+        <main>
+            <!-- Library Controls -->
+            <div class="library-controls">
+                <button onclick="downloadLibraryFile()">Download Updated Library</button>
+                <button onclick="toggleAllEntries()">Collapse/Expand All</button>
+                <button onclick="exportToHtml()">Export to HTML</button>
+                <button onclick="document.getElementById('load-library').click()">Load library.json</button>
+                <input type="file" id="load-library" accept=".json" style="display: none;" onchange="loadLibraryFile(event)">
+            </div>
+            <!-- Intro Section -->
+            <section id="intro">
+                <h2>Intro</h2>
+                <div class="step" id="introduction">
+                    <h3>Introduction</h3>
+                    <p><strong>Description:</strong> Provide an introductory overview or context for the story.</p>
+                    <p><strong>Prompt Used:</strong> Contextual Setup</p>
+                    <div class="text-entries"></div>
+                </div>
+            </section>
+            <!-- Pre-Writing Phase -->
+            <section id="pre-writing">
+                <h2>Phase 1: Pre-Writing</h2>
+                <div class="step" id="idea-generation">
+                    <h3>Step 1: Idea Generation</h3>
+                    <p><strong>Description:</strong> Brainstorm a variety of story ideas or premises.</p>
+                    <p><strong>Prompt Used:</strong> Tree-of-Thought</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="world-building">
+                    <h3>Step 2: World-Building</h3>
+                    <p><strong>Description:</strong> Create detailed background information, such as world lore.</p>
+                    <p><strong>Prompt Used:</strong> Generated Knowledge</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="character-development">
+                    <h3>Step 3: Character Development</h3>
+                    <p><strong>Description:</strong> Craft deep, multi-layered characters.</p>
+                    <p><strong>Prompt Used:</strong> Complexity-Based</p>
+                    <div class="text-entries"></div>
+                </div>
+            </section>
+            <!-- Writing Phase -->
+            <section id="writing">
+                <h2>Phase 2: Writing</h2>
+                <div class="step" id="plot-structuring">
+                    <h3>Step 4: Plot Structuring</h3>
+                    <p><strong>Description:</strong> Map out the story’s events in a logical sequence.</p>
+                    <p><strong>Prompt Used:</strong> Chain-of-Thought</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="subplot-exploration">
+                    <h3>Step 5: Subplot Exploration</h3>
+                    <p><strong>Description:</strong> Explore side stories or twists to enrich the narrative.</p>
+                    <p><strong>Prompt Used:</strong> Tree-of-Thought</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="detail-enhancement">
+                    <h3>Step 6: Detail Enhancement</h3>
+                    <p><strong>Description:</strong> Add specific details like dialogue and descriptions.</p>
+                    <p><strong>Prompt Used:</strong> Least-to-Most</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="thematic-guidance">
+                    <h3>Step 7: Thematic Guidance</h3>
+                    <p><strong>Description:</strong> Align the story with a specific tone or message.</p>
+                    <p><strong>Prompt Used:</strong> Directional-Stimulus</p>
+                    <div class="text-entries"></div>
+                </div>
+            </section>
+            <!-- Revision Phase -->
+            <section id="revision">
+                <h2>Phase 3: Revision</h2>
+                <div class="step" id="consistency-check">
+                    <h3>Step 8: Consistency Check</h3>
+                    <p><strong>Description:</strong> Ensure logical consistency throughout the story.</p>
+                    <p><strong>Prompt Used:</strong> Maieutic Prompting</p>
+                    <div class="text-entries"></div>
+                </div>
+                <div class="step" id="improvement-and-refinement">
+                    <h3>Step 9: Improvement and Refinement</h3>
+                    <p><strong>Description:</strong> Refine the story through critique and enhancement.</p>
+                    <p><strong>Prompt Used:</strong> Self-Refine</p>
+                    <div class="text-entries"></div>
+                </div>
+            </section>
+            <!-- Input Feature -->
+            <section class="input-feature">
+                <h2>Input Feature</h2>
+                <textarea id="input-text" placeholder="Paste your text here..."></textarea>
+                <div class="category-suggestion">
+                    <p>Suggested Category: <span id="suggestion">None</span></p>
+                    <select id="category-select">
+                        <option value="">Select a category</option>
+                        <option value="introduction">Introduction</option>
+                        <option value="idea-generation">Idea Generation</option>
+                        <option value="world-building">World-Building</option>
+                        <option value="character-development">Character Development</option>
+                        <option value="plot-structuring">Plot Structuring</option>
+                        <option value="subplot-exploration">Subplot Exploration</option>
+                        <option value="detail-enhancement">Detail Enhancement</option>
+                        <option value="thematic-guidance">Thematic Guidance</option>
+                        <option value="consistency-check">Consistency Check</option>
+                        <option value="improvement-and-refinement">Improvement and Refinement</option>
+                    </select>
+                    <button onclick="addTextToFramework()">Add to Framework</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="data/storytelling.js"></script>
+</body>
+</html>
